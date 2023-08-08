@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Post: Identifiable, Hashable, Codable {
     let id: String
@@ -13,18 +14,18 @@ struct Post: Identifiable, Hashable, Codable {
     let caption: String
     var likes: Int
     let imageUrl: String
-    let timestamp: Date
+    let timestamp: Timestamp
     var user: User?
 }
 
 extension Post {
     static var MOCK_POSTS: [Post] = [
-        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "yayaya", likes: 12, imageUrl: "Oyster", timestamp: Date(), user: User.MOCK_USERS[0]),
+        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "yayaya", likes: 12, imageUrl: "Oyster", timestamp: Timestamp(), user: User.MOCK_USERS[0]),
         
-        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "yummmmm", likes: 231, imageUrl: "Oyster", timestamp: Date(), user: User.MOCK_USERS[2]),
+        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "yummmmm", likes: 231, imageUrl: "Oyster", timestamp: Timestamp(), user: User.MOCK_USERS[2]),
         
-        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "so good", likes: 54, imageUrl: "Oyster", timestamp: Date(), user: User.MOCK_USERS[2]),
+        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "so good", likes: 54, imageUrl: "Oyster", timestamp: Timestamp(), user: User.MOCK_USERS[2]),
         
-        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "happy day!", likes: 30, imageUrl: "Oyster", timestamp: Date(), user: User.MOCK_USERS[1])
+        .init(id: NSUUID().uuidString, ownerUid: NSUUID().uuidString, caption: "happy day!", likes: 30, imageUrl: "Oyster", timestamp: Timestamp(), user: User.MOCK_USERS[1])
     ]
 }

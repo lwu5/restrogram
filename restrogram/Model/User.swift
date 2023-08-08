@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct User: Identifiable, Hashable, Codable {
     let id: String
@@ -14,16 +15,20 @@ struct User: Identifiable, Hashable, Codable {
     var fullname: String?
     var bio: String?
     let email: String
+    var isCurrentUser: Bool {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return false }
+        return currentUid == id
+    }
 }
 
 extension User {
     static var MOCK_USERS: [User] = [
-        .init(id: NSUUID().uuidString, username: "oyster.hale", profileImageUrl: "Oyster", fullname: "Oyster Hale by Crush", bio: "Yummy!", email: "oyster@gmail.com"),
+        .init(id: NSUUID().uuidString, username: "oyster.hale", profileImageUrl: nil, fullname: "Oyster Hale by Crush", bio: "Yummy!", email: "oyster@gmail.com"),
         
-        .init(id: NSUUID().uuidString, username: "porkbelly", profileImageUrl: "Oyster", fullname: "Pork belly", bio: "We love pork belly", email: "porkbelly@gmail.com"),
+        .init(id: NSUUID().uuidString, username: "porkbelly", profileImageUrl: nil, fullname: "Pork belly", bio: "We love pork belly", email: "porkbelly@gmail.com"),
         
-        .init(id: NSUUID().uuidString, username: "ono", profileImageUrl: "Oyster", fullname: "Ono Fish", bio: "Ono Ono", email: "ono@gmail.com"),
+        .init(id: NSUUID().uuidString, username: "ono", profileImageUrl: nil, fullname: "Ono Fish", bio: "Ono Ono", email: "ono@gmail.com"),
         
-        .init(id: NSUUID().uuidString, username: "chickenteriyaki", profileImageUrl: "Oyster", fullname: nil, bio: "lunchbox available", email: "teriyaki@gmail.com"),
+        .init(id: NSUUID().uuidString, username: "chickenteriyaki", profileImageUrl: nil, fullname: nil, bio: "lunchbox available", email: "teriyaki@gmail.com"),
     ]
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct FeedCell: View {
     let post: Post
@@ -15,11 +16,7 @@ struct FeedCell: View {
             // profile picture + username
             HStack {
                 if let user = post.user {
-                    Image(user.profileImageUrl ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 40)
-                        .clipShape(Circle())
+                    CircularProfileImageView(user: user, size: .small)
                     Text(user.username)
                         .font(.footnote)
                         .fontWeight(.semibold)
@@ -29,7 +26,7 @@ struct FeedCell: View {
             .padding(.leading, 8)
             
             // post image
-            Image(post.imageUrl)
+            KFImage(URL(string: post.imageUrl))
                 .resizable()
                 .scaledToFill()
                 .frame(height:400)
